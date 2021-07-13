@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      function validate() {
+        let firstName = document.registrationForm.fname.value;
+        let lastName = document.registrationForm.lname.value;
+        let phoneNumber = document.registrationForm.phonenumber.value;
+        if (firstName == "") {
+          alert("Please enter a first name");
+          return false;
+        } else if (lastName == "") {
+          alert("Please enter a last name");
+          return false;
+        } else {
+          if (phoneNumber.length > 11) {
+              alert("Please enter a phone number less than or equal to 11 characters");
+              return false;
+          }
+
+          for (let i = 0; i < phoneNumber.length; i++) {
+            const phoneNumberElement = phoneNumber[i];
+            if (phoneNumberElement < "0" || phoneNumberElement > "9"){
+              alert("Please enter a phone number with numerical characters")
+              return false;
+            }
+          }
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>ABC Learning Center</h1>
+    <h2>Online Student Registration</h2>
+
+    <form
+      name="registrationForm"
+      onsubmit="return validate()"
+      action="process.jsp"
+  >
+      <label>First Name</label><br />
+
+      <input type="text" name="fname" /><br />
+      <label>Last Name</label><br />
+      <input type="text" name="lname" /><br />
+
+      <label> Gender: </label> <br />
+      <input type="radio" id="gender" name="gender" value="male" /> Male
+      <br />
+      <input type="radio" id="gender" name="gender" value="female" /> Female
+      <br />
+
+      <label>Residential Address</label><br />
+      <textarea name="address" rows="10" cols="30"> </textarea><br />
+
+      <label>Phone Number</label><br />
+      <input type="text" name="phonenumber" /><br />
+
+      <label>Select course</label><br />
+      <select id="courses" name="course">
+        <option value="Programming in Java">Programming in Java</option>
+        >
+        <option value="Programming in .Net">Programming in .Net</option>
+        <option value="Microsoft Office">Microsoft Office</option>
+        <option value="HTML">HTML</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
